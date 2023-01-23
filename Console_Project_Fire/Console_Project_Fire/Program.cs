@@ -1,4 +1,5 @@
 ﻿using Console_Project_Fire;
+using System;
 
 class Program
 {
@@ -19,13 +20,19 @@ class Program
         // 해당 배열마다 대사를 뽑기 위한 변수 선언
         int Index = 0;
 
+        // 게임 진행 중 어디서 나간지 확인하기 위한 변수 선언
+        int gameOut = 0;
+
+        // 불 배열 선언해서 if(key == ConsoleKey.Enter)
+
         // 미연시 사진과 같이 출력 될 시작 메세지
-        name = Console.ReadLine(); // 사용자 이름 받기
         Console.WriteLine("안녕하세요!");
         Console.WriteLine("망상의 나라 [찐따인 내가  도내 최상위 쿨뷰티 초S급 미녀 일진과 연애를...?]에 오신 것을 환영합니다.");
-        Console.WriteLine("게임 진행을 위해 이름을 작성하고 Enter키를 눌러주세요");
+        Console.WriteLine("게임 진행을 위해 이름을 작성하고 Enter키를 2번 눌러주세요");
         Console.Write("이름 : ");
+        name = Console.ReadLine();
 
+        // 해당 배열마다 주인공 -> name으로 바꿔주기 위한 구문
         for (int i = 0; i < talking.Talk.Length; i++)
         {
             // 변경된 이름을 string 타입에 talking.Talk로 넣어줍니다.
@@ -34,17 +41,18 @@ class Program
 
 
 
-            // 게임 루프
-            while (true)
+        // 게임 루프
+        while (true)
         {
             //==============Render================
+            
 
 
             //=============ProcessInput===========
             ConsoleKey key = ConsoleKey.NoName; // 콘솔 키 소환, 아무것도 아닌 상태
 
             if (Console.KeyAvailable == true) // 콘솔을 비동기로 만들어준다. 키를 눌렀을 때만 실행하도록 만들어준다.
-            { 
+            {
                 key = Console.ReadKey().Key;
             }
 
@@ -54,25 +62,45 @@ class Program
             // 게임 대사 및 나레이션
             if (key == ConsoleKey.Enter)
             {
-                Console.Clear();
+                Console.WriteLine("=============================================================================================================");
+                Console.WriteLine(" ");
                 Console.WriteLine(talking.Talk[Index]);
-                Index += 1;
+                ++Index;
+                Console.WriteLine(" ");
+
+                if (talking.Talk[Index] == "선택 1번 문항")
+                {
+                    Console.WriteLine("1번 : 간다");
+                    Console.WriteLine("2번 : 안간다");
+                    talking.Talk[Index] = talking.Talk[Index].Replace("선택 1번 문항", " ");
+                    key = Console.ReadKey().Key;
+
+                    if (key == ConsoleKey.D1)
+                    {
+                       
+                    }
+
+                    if (key == ConsoleKey.D2)
+                    {
+                        talking.Talk[Index] = talking.Talk[Index].Replace("선택 1번 문항", "겁쟁이인 당신 도망쳤군요!");
+                        gameOut = 1;
+                        break;
+                    }
+                }
             }
 
-            // 상황 나레이션
-            //if (key == ConsoleKey.Enter)
-            //{
-            //    Console.WriteLine("빵빵빵~!! 슈우웅~!! 깔깔깔~!! 저녁 시간, 사람들로 북적부적 거리는 천호역");
-            //    Console.WriteLine("나는 1년간 열심히 모은 돈으로 나츠 피규어를 사러 가는 길이다.");
-            //}
-
-            //// 상황 나레이션
-            //if (key == ConsoleKey.Enter)
-            //{
-            //    Console.WriteLine("나는 1년간 열심히 모은 돈으ㄴㅇㄻㄴㅇㄹㄴㅇㅁㄹ로 나츠 피규어를 사러 가는 길이다.");
-            //}
 
         }
- 
+
+
+        if (gameOut == 1)
+        {
+            Console.Clear();
+            Console.WriteLine("무서워서 도망갔습니다.");
+            Console.WriteLine("그녀는 결국...나쁜 사람들 손에 다쳤고, 주인공은(는) 방관죄로 감옥에 들어갔습니다.");
+            Console.WriteLine("불의를 보면 참지 말고 싸우세요!");
+        }
+
+
     }
 }
