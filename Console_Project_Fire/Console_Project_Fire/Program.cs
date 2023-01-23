@@ -96,11 +96,11 @@ class Program
         if (gameOut == 1)
         {
             Console.Clear();
-            Console.WriteLine("무서워서 도망갔습니다.");
+            string str = name;
+            Console.WriteLine($"{str}은(는) 무서워서 도망갔습니다.");
             Console.WriteLine("그녀는 결국...나쁜 사람들 손에 다쳤고, 주인공은(는) 방관죄로 감옥에 들어갔습니다.");
             Console.WriteLine("불의를 보면 참지 말고 싸우세요!");
         }
-
 
     }
 }
