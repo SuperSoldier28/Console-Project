@@ -75,12 +75,14 @@ class Program
                     talking.Talk[Index] = talking.Talk[Index].Replace("선택 1번 문항", " ");
                     key = Console.ReadKey().Key;
 
-                    if (key == ConsoleKey.D1)
+
+                    if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
                     {
-                       
+                        continue;
+
                     }
 
-                    if (key == ConsoleKey.D2)
+                    if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
                     {
                         talking.Talk[Index] = talking.Talk[Index].Replace("선택 1번 문항", "겁쟁이인 당신 도망쳤군요!");
                         gameOut = 1;
