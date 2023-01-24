@@ -64,22 +64,22 @@ class Program
             {
                 Console.WriteLine("=============================================================================================================");
                 Console.WriteLine(" ");
+                
                 Console.WriteLine(talking.Talk[Index]);
-                ++Index;
+                Index++;
                 Console.WriteLine(" ");
 
-                if (talking.Talk[Index] == "선택 1번 문항")
+                if (talking.Talk[Index] == "선택 1번")
                 {
-                    Console.WriteLine("1번 : 간다");
-                    Console.WriteLine("2번 : 안간다");
-                    talking.Talk[Index] = talking.Talk[Index].Replace("선택 1번 문항", " ");
+                    Console.WriteLine("1번 : 도와주러 간다");
+                    Console.WriteLine("2번 : 도와주러 가지 않는다");
                     key = Console.ReadKey().Key;
 
 
                     if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
                     {
+                        talking.Talk[Index] = talking.Talk[Index].Replace("선택 1번", "타다다닥!!!(뛰는 소리)\n주인공 : 저...저기요!!!");
                         continue;
-
                     }
 
                     if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
@@ -92,15 +92,18 @@ class Program
             }
 
 
+        
         }
 
+        // 주인공 이름 저장
+        string heroName = name;
+        ConsoleKey key1 = Console.ReadKey().Key;
 
-        if (gameOut == 1)
+        if (gameOut == 1 && key1 == ConsoleKey.Enter)
         {
             Console.Clear();
-            string str = name;
-            Console.WriteLine($"{str}은(는) 무서워서 도망갔습니다.");
-            Console.WriteLine("그녀는 결국...나쁜 사람들 손에 다쳤고, 주인공은(는) 방관죄로 감옥에 들어갔습니다.");
+            Console.WriteLine($"{heroName}은(는) 무서워서 도망갔습니다.");
+            Console.WriteLine($"그녀는 결국...나쁜 사람들 손에 다쳤고, {heroName}은(는) 방관죄로 감옥에 들어갔습니다.");
             Console.WriteLine("불의를 보면 참지 말고 싸우세요!");
         }
 
