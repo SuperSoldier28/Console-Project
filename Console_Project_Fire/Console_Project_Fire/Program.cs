@@ -27,7 +27,7 @@ class Program
 
         // 미연시 사진과 같이 출력 될 시작 메세지
         Console.WriteLine("안녕하세요!");
-        Console.WriteLine("망상의 나라 [찐따인 내가  도내 최상위 쿨뷰티 초S급 미녀 일진과 연애를...?]에 오신 것을 환영합니다.");
+        Console.WriteLine("망상의 나라 [찐따와 일진의 차이는 한 끝 차이라는 것을 여우에게 증명했던 건에 대하여]에 오신 것을 환영합니다.");
         Console.WriteLine("게임 진행을 위해 이름을 작성하고 Enter키를 2번 눌러주세요");
         Console.Write("이름 : ");
         name = Console.ReadLine();
@@ -78,6 +78,7 @@ class Program
 
                     if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
                     {
+                        // [6] - 선택 1번 출력을 대사로 바꿔주기. 아~ 상당히 좋았어~!!!
                         talking.Talk[Index] = talking.Talk[Index].Replace("선택 1번", "타다다닥!!!(뛰는 소리)\n주인공 : 저...저기요!!!");
                         continue;
                     }
