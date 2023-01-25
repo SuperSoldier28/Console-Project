@@ -20,7 +20,7 @@ class Program
         Talking talking = new Talking();
 
         // 해당 배열마다 대사를 뽑기 위한 변수 선언
-        int Index = 68;
+        int Index = 0;
 
         // 게임 진행 중 어디서 나간지 확인하기 위한 변수 선언
         int gameOut = 0;
@@ -456,7 +456,7 @@ class Program
                 if (talking.Talk[Index] == "선택 9번")
                 {
                     Console.WriteLine("1번 : 사귄다고 고백한다.");
-                    Console.WriteLine("2번 : 갑작스러운 고백으로 서윤이가 부담스러워 할 수 있으니 고백하지 않는다.");
+                    Console.WriteLine("\n2번 : 갑작스러운 고백으로 서윤이가 부담스러워 할 수 있으니 고백하지 않는다.");
                     key = Console.ReadKey().Key;
 
 
