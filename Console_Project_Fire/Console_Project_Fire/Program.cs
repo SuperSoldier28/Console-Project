@@ -20,7 +20,7 @@ class Program
         Talking talking = new Talking();
 
         // 해당 배열마다 대사를 뽑기 위한 변수 선언
-        int Index = 65;
+        int Index = 68;
 
         // 게임 진행 중 어디서 나간지 확인하기 위한 변수 선언
         int gameOut = 0;
@@ -160,6 +160,30 @@ class Program
         }
         #endregion
 
+        #region 음식
+        void RenderFood()
+        {
+            string[] food = File.ReadAllLines("food.txt");
+
+            for (int i = 0; i < food.Length; i++)
+            {
+                Console.WriteLine(food[i]);
+            }
+        }
+        #endregion
+
+        #region 마지막 장면 - 여주
+        void RenderLove()
+        {
+            string[] love = File.ReadAllLines("love.txt");
+
+            for (int i = 0; i < love.Length; i++)
+            {
+                Console.WriteLine(love[i]);
+            }
+        }
+        #endregion
+
         // 게임 루프
         while (true)
         {
@@ -223,10 +247,24 @@ class Program
                 }
                 #endregion
 
-                #region 매력적인 표정의 여주
+                #region 비키니 여주
                 if (Index == 72)
                 {
                     RenderBikini();
+                }
+                #endregion
+
+                #region 음식
+                if (Index == 74)
+                {
+                    RenderFood();
+                }
+                #endregion
+
+                #region 마지막 장면
+                if (Index == 79)
+                {
+                    RenderLove();
                 }
                 #endregion
 
@@ -414,6 +452,27 @@ class Program
                     }
                 }
 
+                // 9번 선택지
+                if (talking.Talk[Index] == "선택 9번")
+                {
+                    Console.WriteLine("1번 : 사귄다고 고백한다.");
+                    Console.WriteLine("2번 : 갑작스러운 고백으로 서윤이가 부담스러워 할 수 있으니 고백하지 않는다.");
+                    key = Console.ReadKey().Key;
+
+
+                    if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
+                    {
+                        talking.Talk[Index] = talking.Talk[Index].Replace("선택 9번", "주인공 : 나랑 사귀자 서윤아. 더이상 내 마음 못 숨기겠어. 정말 많이 좋아해 서윤아...");
+                        continue;
+                    }
+
+                    if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
+                    {
+                        gameOut = 9;
+                        break;
+                    }
+                }
+
 
             }
         }
@@ -496,6 +555,16 @@ class Program
             RenderMarry();
             Console.WriteLine($"\n{heroName}은(는) 꿈에 그리던 도내 최상 S급 미녀 서윤이와 연애를 했습니다.");
             Console.WriteLine($"\n그렇게 {heroName}과(와) 이서윤은 같은 대학으로 진학하고, 열심히 공부해서, 서로 진실된 사랑의 약속인 '결혼'을 하면서 서로 행복하게 살았답니다~~!!!");
+
+        }
+
+        // 9번 선택지 게임 아웃
+        if (gameOut == 9 && key1 == ConsoleKey.Enter)
+        {
+            Console.Clear();
+            Console.WriteLine($"\n{heroName}은(는) 끝내 용기를 내지 못해 서윤이와 이어질 수 없었습니다.");
+            Console.WriteLine($"\n{heroName}은(는) 평생 이 순간을 후회하면서 인생을 낭비했습니다.");
+            Console.WriteLine($"\n그러니 여러분 모두, 사랑하는 사람한테 사랑한다고 말하는 것을 두려워하지마세요. 당당하고 자신있게 사랑한다고 고백하세요.");
 
         }
 
