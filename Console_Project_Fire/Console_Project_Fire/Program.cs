@@ -25,6 +25,9 @@ class Program
         // 게임 진행 중 어디서 나간지 확인하기 위한 변수 선언
         int gameOut = 0;
 
+        // 마지막 장면 나오고 반복문 종료
+        int Last = 0;
+
 
         // 미연시 사진과 같이 출력 될 시작 메세지
         Console.WriteLine("안녕하세요!");
@@ -261,12 +264,6 @@ class Program
                 }
                 #endregion
 
-                #region 마지막 장면
-                if (Index == 79)
-                {
-                    RenderLove();
-                }
-                #endregion
 
                 Console.WriteLine(talking.Talk[Index]);
                 Index++;
@@ -462,8 +459,9 @@ class Program
 
                     if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
                     {
-                        talking.Talk[Index] = talking.Talk[Index].Replace("선택 9번", "주인공 : 나랑 사귀자 서윤아. 더이상 내 마음 못 숨기겠어. 정말 많이 좋아해 서윤아...");
-                        continue;
+                        Last = 1;
+                        break;
+                        
                     }
 
                     if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
@@ -565,7 +563,16 @@ class Program
             Console.WriteLine($"\n{heroName}은(는) 끝내 용기를 내지 못해 서윤이와 이어질 수 없었습니다.");
             Console.WriteLine($"\n{heroName}은(는) 평생 이 순간을 후회하면서 인생을 낭비했습니다.");
             Console.WriteLine($"\n그러니 여러분 모두, 사랑하는 사람한테 사랑한다고 말하는 것을 두려워하지마세요. 당당하고 자신있게 사랑한다고 고백하세요.");
+        }
 
+        // 마지막 게임 종료
+        if (Last == 1 && key1 == ConsoleKey.Enter)
+        {
+            Console.Clear();
+            Console.WriteLine($"\n{heroName} : 나랑 사귀자 서윤아. 더이상 내 마음을 못숨기겠어. 정말 많이 좋아해 서윤아...!");
+            Console.WriteLine($"\n이서윤 : ...이 순간을 얼마나 기달렸는지 몰라 바보야...이제서야 말해주고...나도 많이 좋아해 {heroName}..!");
+            RenderLove();
+            Console.WriteLine("\n게임해주셔서 감사합니다. 유저분 모두 행복한 나날들이 늘 함께 하길 바라겠으며 다음에도 저희 게임을 이용 부탁드립니다. 감사합니다.");
         }
 
     }
