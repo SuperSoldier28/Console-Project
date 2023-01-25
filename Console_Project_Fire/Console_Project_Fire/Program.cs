@@ -23,7 +23,6 @@ class Program
         // 게임 진행 중 어디서 나간지 확인하기 위한 변수 선언
         int gameOut = 0;
 
-        // 불 배열 선언해서 if(key == ConsoleKey.Enter)
 
         // 미연시 사진과 같이 출력 될 시작 메세지
         Console.WriteLine("안녕하세요!");
@@ -62,13 +61,14 @@ class Program
             // 게임 대사 및 나레이션
             if (key == ConsoleKey.Enter)
             {
-                Console.WriteLine("=============================================================================================================");
+                Console.WriteLine("============================================================================================================================================================");
                 Console.WriteLine(" ");
                 
                 Console.WriteLine(talking.Talk[Index]);
                 Index++;
                 Console.WriteLine(" ");
 
+                // 1번 선택지
                 if (talking.Talk[Index] == "선택 1번")
                 {
                     Console.WriteLine("1번 : 도와주러 간다");
@@ -78,34 +78,66 @@ class Program
 
                     if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
                     {
-                        // [6] - 선택 1번 출력을 대사로 바꿔주기. 아~ 상당히 좋았어~!!!
+                        // [6] - 선택 1번 출력을 대사로 바꿔주기.
                         talking.Talk[Index] = talking.Talk[Index].Replace("선택 1번", "타다다닥!!!(뛰는 소리)\n주인공 : 저...저기요!!!");
                         continue;
                     }
 
                     if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
                     {
-                        talking.Talk[Index] = talking.Talk[Index].Replace("선택 1번 문항", "겁쟁이인 당신 도망쳤군요!");
                         gameOut = 1;
                         break;
                     }
                 }
+
+                // 2번 선택지
+                if (talking.Talk[Index] == "선택 2번")
+                {
+                    Console.WriteLine("1번 : 김윤하한테 간다.");
+                    Console.WriteLine("2번 : 김윤하한테 가지 않는다.");
+                    key = Console.ReadKey().Key;
+
+
+                    if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
+                    {
+                        // [6] - 선택 1번 출력을 대사로 바꿔주기.
+                        talking.Talk[Index] = talking.Talk[Index].Replace("선택 2번", "터벅터벅\n주인공 : 어...어..!");
+                        continue;
+                    }
+
+                    if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
+                    {
+                        gameOut = 2;
+                        break;
+                    }
+                }
+
+
+
             }
-
-
-        
         }
 
         // 주인공 이름 저장
         string heroName = name;
         ConsoleKey key1 = Console.ReadKey().Key;
 
+        // 1번 선택지 게임 아웃
         if (gameOut == 1 && key1 == ConsoleKey.Enter)
         {
             Console.Clear();
+            Console.WriteLine("iEu.  ,. ..  .  .                 .B. . ... ... . .   . .                                 .     .   ,7r:P:.             ... r,..,.,,,,::::i:::::iii;ri\r\n7uB,                               YM                                                                :i:7:                  ::       . ......,.:,:::::\r\nL78B  ,  .     .                    M5  . .                                                           ;rrL  :           ....,7....,.,.,,:,::::::::ii;:\r\n7YLMB. .                             @                                                                .r;J. i.          .. , r, .....,.,,:,:,::::i:ii:\r\ni;27EBi     ... . . .                :B                                                                :77v :               ,ri ......,.,.,,::::::::i:\r\ni:vU71Ov     .   .                    EU                                                               .;r7            ...   ,7  ....,.,.,.,,:::::::i:\r\nr:i7ULLNq:    .                        @,                                                               :rY.          ...     ;: .......,.,,:,::::::i:\r\ni:::rJJvjNY. .         .               :B                                                               .i5;                   r ........,.,,:,:::::::\r\nr:i:::vJY71XJ       , ,                 72                                                              .iUi        .:;v21k17:,i. ........,.,,:,::::i:\r\ni:ii::,ivY77XMr.       . .               Jv                                                              iL:    iLuSUuvri;7J2kSJ7  ......,.,.,,,,:::::\r\nr:i::::.,iLvrvZqi      ...                ji                                                             :q: .0BOJi::i7vYYuu2Uk0Mu  ......,.,,,,:::::,\r\ni:::::::..,rv7iLEU.    ....                r:                                                            ,1LG@Er:ruSPNPPSXk1XGqFFZ8i ......,.,.:,:::::\r\n;:i::::::...:rLrrJPL,                       ii                                                           rMBJ,:j8Pur:.. ..r,:iFBMS@O  ......,.,,:,:::,\r\ni:::::::,,....:r77iJ1r.                      ::                                                         X@7  UOS,           :i:78@BB  .......,.,,:,::,\r\n;,i::::,,,,.... :;vrrLU:    .                 .:                                                       B@..X@k,              .::.P@B  ........,,,,:::.\r\ni:::::::,,.,....  :77rrU7:                      ;:                                                    Z@.SBO.                  .  GB   ........,,,,::,\r\n;:i::::,,,,.,....   :r7;7JL     .                rU.                                                 L@.MBr                     .  50  .......,,,,:::.\r\ni:::::::,,.,......   .:vrr7ui                     .Fu.                                             .SB,qB,                          rJ ........,,,,::,\r\ni,i::::,:,,.,...... .  .i77;u2i   .                 .rr.                                          rXv:NBX                            ,L ....,.,,,,,,:.\r\ni:::::::,,,,..........   ,;7ir21.    .             .   r7                                       :jF.7OO@r                          ,  r7 ......,,,,::,\r\ni,i::::::,,.,...... ...    :rri7GL     .  .       .      ii   ...          .r .               rY:iYXBZZB:                           :  L: ....,.,,:,:.\r\ni:::::::,,,,........ . .     irr:kO:     ..          ,;jFqZG8OOO8MMMkuj. i81S:1:               kLNZGEEG@            .               ,.  r......,.:,::,\r\ni,:::::::,,.,........ .       ,;r:7MU            .JM@BBq2LLLuJuLLvjjuuS251PEOM@F               ,k0kkPPMB           :;               .i.  i....,.,,:::.\r\ni:::::::,,,,........ . . .      :7i:1P.   ..   LB@BS7r72NBBE1uLYjS0O@@B@BMOOZ8O@FiZ5. ..      :i,LNS1qG@          ,J                 .i  :: ...,,,,::,\r\ni:i::::::,,.,........ . . .      ,rr:rqL.    J@BSi;YEOOJi.          .:XB@OZqEqE8@vJkZ0E,7Nv   rBGuUJXPMB          Uj    .             .7  7i .,.,,:::.\r\ni::i::::,:,,.,...... ... .         iri:UP:  B@vi7PMN7,                  7@BOq00OM,   1v iMOO880kv;..rZ@@          U,:   .,             N   G:..,,,:::,\r\ni:i::::,:,,.,........ . . .   .     .;r:rF7BGiuSGPi                       OBPq8ZMLi: :vj8: uS7:.:ii:,:vJ.         j :J.               :.   iv ..,,:::,\r\ni::i::::,:,,.,.,........ . . .        :7i:kSYEkMF.                         0BS7r.  :7: .:.   :rr:..rri,7i        :u  k,             ..     Fi .,,:,::,\r\nr:i:::::::,,,.,............ .          .i:vJ8SMP.:.                         iUi:    :i.:ri777:.     ::ivL        L7..1.           .:.   :,1L..,,:,:,:,\r\ni:ii::::::,,.,........ . . .             :7Eq0BL::                            :7.    ..,  .,          :rF        ri..Z           ::   .: rL ...,,:::::\r\nr:iii::::::,,,,.,...... . . .            .LBBG@X:  .                            ..                    iivv       :7 F@          ::   .7 iJ:..,,,:::::,\r\nr:ii:i::::::,,.,.,..........             ,i5M@B@,.  .                             :vr.                irir       ,7 7. .       .:   ,7 i:r ..,,:,:::::\r\nr:;ii::::::,:,,,,........ . .            ,r,,vOBv:.  .                 ,            :0:               ,r;r,      ,i.          ,J   .: :Yi,..,.,,:::::,\r\nrii;ii::::::,:,,,,........ . . .         .r7:,.:YL.   .             .                ,j                irrv,     ;..         .k    ,  BG: .,,,,:,:::::\r\n7:;iiii::::::,:,,.,........ . . . .       .:;rr::Ni    .      .     :,,                :                r;rL    ;0          .S    :  2M. .,,,,:,::::i:\r\nri;;iiii::::::,:,,.,........ . . .           .,i:LBi                 0i. .:,           v.               :7ir7iiv1O          :    r   E:..,.,,:,:::::::\r\n7iri;ii:i::::::,,,,.,.......... . . .           i,MM                 F:,:ri:7:.       7r                 i7rrrv;iLi       ,     Nr  Y:..,.,,::::::::i:\r\n7irririiii::::::,:,,.......... . .     .        .i,@v               ., ..:7: .......,7J                  .:7rr:rr;7jj77jvSY,  .P@vvv...,.,,:,::::::ii:\r\nvirrriiii:i::::::,:.,............ . . .          :ii@:..           .,      ..   ,.  JJ;                     .  .r777vvYvYvvLJuNu7v7...,,,,:,::::::ii;:\r\n7r77;riiii:i::::::,:,,............ . . .          i:v@ :                    ..  .:   7                           .,::::::;rvvvii:,...,,:,:,::::::iiiii\r\nLr777rri;iiii::::::,:,,.,.,.......... .   .       .;:N5 .                            :.                                   ..,.  . ..,.,,::::::::i:iiri\r\nvr77r7rri;ii:i::::::,:,,.,.,........ . . . .       ,r:X  .,.                         O,                    . . .   .   . .    .....,,,,::::::::iiiii;i\r\nLrv77r7rri;iiii::::::::,,,,.............. . . .     :r7i  :i.                       kB                      .   . ... ............,.:,:,::::::i:iir;ri\r\nL77v77r7rri;iiii:i::::::,:.,.,............ . . .     irJ,   r:     ...       ....,rk1                  .   . . . ..............,.,,:,::::::::iiii;irri\r\nJ7Lvvr7r7;riiiiii::::::::,:.,.,.,.............. . .   rru:              ..,:iii:r7Lri                 . . . ... ............,.,,,,:::::::::iiiiir;rr7i\r\nYvvL7v77r7rr;;iiii:i::::::,:,,.,.............. ... .  .7r7ri.  ..::ir77LvLLLvLvv77r;.                . . . . ..............,.,.:,:,::::::i:iiii;;rr77r\r\njvYLLvv7777r7iririiii::::::::::,,,,.,.............. .  :L777LLUuYvL7v7777r7r7r7ri:.     . . . . . . . ... ..............,,,,,,:,::::::::iiii;ir;rr77vr\r\njLYYLYvL7777r7rr;ri;ii:i::::::::,:,:,,.,.,............ .:77vr77777rr;riiii:::,.      . . ..... ....................,.,.,,,,::::::::::iiii;irrrr7r77vv7\r\nU7Lvvvv77r7rri;iiii::::::::,,.,.......... .                .:,.                                                     . ........,.,,:,::::::i:ii;irrrrvr");
             Console.WriteLine($"{heroName}은(는) 무서워서 도망갔습니다.");
             Console.WriteLine($"그녀는 결국...나쁜 사람들 손에 다쳤고, {heroName}은(는) 방관죄로 감옥에 들어갔습니다.");
             Console.WriteLine("불의를 보면 참지 말고 싸우세요!");
+        }
+
+        // 2번 선택지 게임 아웃
+        if (gameOut == 1 && key1 == ConsoleKey.Enter)
+        {
+            Console.Clear();
+            Console.WriteLine($"{heroName}은(는) 괜한 객기로 김윤하의 화를 돋았습니다..");
+            Console.WriteLine($"{heroName}은(는) 김윤하에게 이루 말하기 힘들정도로 구타를 당했습니다.");
+            Console.WriteLine($"수치스러움을 느끼던 {heroName}은(는) 학교를 자퇴했습니다.");
         }
 
     }
