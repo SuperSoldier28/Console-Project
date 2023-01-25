@@ -99,6 +99,30 @@ class Program
             }
         }
         #endregion
+
+        #region 여주 울면서 고백
+        void RenderHappyCrying()
+        {
+            string[] happyCrying = File.ReadAllLines("happyCrying.txt");
+
+            for (int i = 0; i < happyCrying.Length; i++)
+            {
+                Console.WriteLine(happyCrying[i]);
+            }
+        }
+        #endregion
+
+        #region 남주 여주 결혼
+        void RenderMarry()
+        {
+            string[] marry = File.ReadAllLines("marry.txt");
+
+            for (int i = 0; i < marry.Length; i++)
+            {
+                Console.WriteLine(marry[i]);
+            }
+        }
+        #endregion
         // 게임 루프
         while (true)
         {
@@ -118,15 +142,23 @@ class Program
                 ++Index;
             }
 
+            // 여주 울부짖는 장면
             if (Index == 57)
             {
                 RenderCrying();
                 ++Index;
             }
 
+            // 남주 진심 펀치
             if (Index == 58)
             {
                 RenderPunch();
+                ++Index;
+            }
+
+            if (Index == 61)
+            {
+                RenderHappyCrying();
                 ++Index;
             }
 
@@ -281,7 +313,7 @@ class Program
                     {
                        
                         talking.Talk[Index] = talking.Talk[Index].Replace("선택 6번", $"희미해진 정신 속 서윤이에 목소리를 들은 {name}은(는) 단전에 끓어오르는 분노와 서윤이에 애달픈 애원의 목소리에 온 힘을 다해!" +
-                            $"\n\n{name} : 김윤하!!!!!!!!!아아아아아악!!!!!!!!!!!!");
+                            $"\n\n{name} : (결연에 가득찬 목소리로) 김윤하!!!!!!!!!아아아아아악!!!!!!!!!!!!");
                         continue;
                     }
 
@@ -309,6 +341,27 @@ class Program
                     if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
                     {
                         gameOut = 7;
+                        break;
+                    }
+                }
+
+                // 8번 선택지
+                if (talking.Talk[Index] == "선택 8번")
+                {
+                    Console.WriteLine("1번 : 사귄다.");
+                    Console.WriteLine("2번 : 사귀지 않는다.");
+                    key = Console.ReadKey().Key;
+
+
+                    if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
+                    {
+                        talking.Talk[Index] = talking.Talk[Index].Replace("선택 8번", "주인공 : (당황하면서)하하하...아니...우리 고3이잖아...프로그래밍 언어 공부에 집중하자...미안해 서윤아.");
+                        continue;
+                    }
+
+                    if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
+                    {
+                        gameOut = 8;
                         break;
                     }
                 }
@@ -378,7 +431,7 @@ class Program
             Console.WriteLine($"{heroName}은(는) 그 누구와도 대화하지 못한채 히키코모리가 되었습니다.");
         }
 
-        // 6번 선택지 게임 아웃
+        // 7번 선택지 게임 아웃
         if (gameOut == 7 && key1 == ConsoleKey.Enter)
         {
             Console.Clear();
@@ -386,6 +439,16 @@ class Program
             Console.WriteLine($"\n{heroName}은(는) 볼을 때려 치명상을 주지 못했습니다.");
             Console.WriteLine($"\n체력이 이미 바닥난 {heroName}은(는) 더 이상 저항하지 못하고 계속 맞기만 했습니다. 너무 맞아 정신을 잃은 {heroName}은(는) 기절했습니다.");
             Console.WriteLine($"\n{heroName}은(는) 정신을 차린 뒤 폭력의 트라우마에서 벗아나지 못한채 히키코모리가 되었습니다.");
+        }
+
+        // 8번 선택지 게임 아웃
+        if (gameOut == 8 && key1 == ConsoleKey.Enter)
+        {
+            Console.Clear();
+            RenderMarry();
+            Console.WriteLine($"\n{heroName}은(는) 꿈에 그리던 도내 최상 S급 미녀 서윤이와 연애를 했습니다.");
+            Console.WriteLine($"\n그렇게 {heroName}과(와) 이서윤은 같은 대학으로 진학하고, 열심히 공부해서, 서로 진실된 사랑의 약속인 '결혼'을 하면서 서로 행복하게 살았답니다~~!!!");
+
         }
 
     }
