@@ -20,7 +20,7 @@ class Program
         Talking talking = new Talking();
 
         // 해당 배열마다 대사를 뽑기 위한 변수 선언
-        int Index = 0;
+        int Index = 53;
 
         // 게임 진행 중 어디서 나간지 확인하기 위한 변수 선언
         int gameOut = 0;
@@ -123,56 +123,25 @@ class Program
             }
         }
         #endregion
+
+        #region 남주 여주 결혼
+        void RenderQuestion()
+        {
+            string[] question = File.ReadAllLines("question.txt");
+
+            for (int i = 0; i < question.Length; i++)
+            {
+                Console.WriteLine(question[i]);
+            }
+        }
+        #endregion
+
         // 게임 루프
         while (true)
         {
-            //==============Render================
-
-            // 남주 포효 그려주기
-            if (Index == 55) 
-            {
-                RenderKsw();
-                ++Index;
-            }
-
-            // 남주 맞는 장면
-            if (Index == 56)
-            {
-                RenderViolence();
-                ++Index;
-            }
-
-            // 여주 울부짖는 장면
-            if (Index == 57)
-            {
-                RenderCrying();
-                ++Index;
-            }
-
-            // 남주 진심 펀치
-            if (Index == 58)
-            {
-                RenderPunch();
-                ++Index;
-            }
-
-            if (Index == 61)
-            {
-                RenderHappyCrying();
-                ++Index;
-            }
-
-
-
-
-            //=============ProcessInput===========
+            //==============ProcessInput================
             ConsoleKey key = ConsoleKey.NoName; // 콘솔 키 소환, 아무것도 아닌 상태
-
-            if (Console.KeyAvailable == true) // 콘솔을 비동기로 만들어준다. 키를 눌렀을 때만 실행하도록 만들어준다.
-            {
-                key = Console.ReadKey().Key;
-            }
-
+            key = Console.ReadKey().Key; // 동기 처리
 
             //=============Update=================
 
@@ -181,11 +150,60 @@ class Program
             {
                 Console.WriteLine("============================================================================================================================================================");
                 Console.WriteLine(" ");
-                
+                #region 포효
+                if (Index == 56)
+                {
+                    RenderKsw();
+                    // ++Index;
+
+                }
+                #endregion
+
+                #region 폭력
+                if (Index == 57)
+                {
+                    RenderViolence();
+                    // ++Index;
+                }
+                #endregion
+
+                #region 여주 울부짖는 장면
+                if (Index == 58)
+                {
+                    RenderCrying();
+                    // ++Index;
+                }
+                #endregion
+
+                # region 남주 진심 펀치
+                if (Index == 60)
+                {
+                    RenderPunch();
+                    // ++Index;
+                }
+                #endregion
+
+                # region 행복해서 웃는 여주
+                if (Index == 63)
+                {
+                    RenderHappyCrying();
+                    // ++Index;
+                }
+                #endregion
+
+                #region 바다 놀러가자고 묻는 여주
+                if (Index == 67)
+                {
+                    RenderHappyCrying();
+                    // ++Index;
+                }
+                #endregion
+
                 Console.WriteLine(talking.Talk[Index]);
                 Index++;
                 Console.WriteLine(" ");
 
+            
                 // 1번 선택지
                 if (talking.Talk[Index] == "선택 1번")
                 {
@@ -287,9 +305,8 @@ class Program
 
                     if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
                     {
-                        // [6] - 선택 1번 출력을 대사로 바꿔주기.
                         talking.Talk[Index] = talking.Talk[Index].Replace("선택 5번", $"살면서 그 누구도 찐따였던 {name}을(를) 도와주지 않았다." +
-                                                                                        "\n\n 하지만 서윤이는 달랐다. " +
+                                                                                        "\n\n하지만 서윤이는 달랐다. " +
                                                                                         "\n\n서윤이는 주인공을(를) 위해 달려왔고, 걱정 해줬고, 말리고 있었다." +
                                                                                          $"\n\n그런 서윤이에 모습에 감동을 받고, 용기를 얻은 {name}은(는) 두려움을 이긴 채 당당히 맞설려고 하고 있다!");
                         continue;
