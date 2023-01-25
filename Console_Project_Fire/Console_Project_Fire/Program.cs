@@ -20,7 +20,7 @@ class Program
         Talking talking = new Talking();
 
         // 해당 배열마다 대사를 뽑기 위한 변수 선언
-        int Index = 53;
+        int Index = 65;
 
         // 게임 진행 중 어디서 나간지 확인하기 위한 변수 선언
         int gameOut = 0;
@@ -124,14 +124,38 @@ class Program
         }
         #endregion
 
-        #region 남주 여주 결혼
-        void RenderQuestion()
+        #region 저돌적인 여주
+        void RenderRush()
         {
-            string[] question = File.ReadAllLines("question.txt");
+            string[] rush = File.ReadAllLines("rush.txt");
 
-            for (int i = 0; i < question.Length; i++)
+            for (int i = 0; i < rush.Length; i++)
             {
-                Console.WriteLine(question[i]);
+                Console.WriteLine(rush[i]);
+            }
+        }
+        #endregion
+
+        #region 매력적인 여주
+        void RenderAttractive()
+        {
+            string[] attractive = File.ReadAllLines("attractive.txt");
+
+            for (int i = 0; i < attractive.Length; i++)
+            {
+                Console.WriteLine(attractive[i]);
+            }
+        }
+        #endregion
+
+        #region 비키니 여주
+        void RenderBikini()
+        {
+            string[] bikini = File.ReadAllLines("bikini.txt");
+
+            for (int i = 0; i < bikini.Length; i++)
+            {
+                Console.WriteLine(bikini[i]);
             }
         }
         #endregion
@@ -154,8 +178,6 @@ class Program
                 if (Index == 56)
                 {
                     RenderKsw();
-                    // ++Index;
-
                 }
                 #endregion
 
@@ -163,7 +185,6 @@ class Program
                 if (Index == 57)
                 {
                     RenderViolence();
-                    // ++Index;
                 }
                 #endregion
 
@@ -171,7 +192,6 @@ class Program
                 if (Index == 58)
                 {
                     RenderCrying();
-                    // ++Index;
                 }
                 #endregion
 
@@ -179,7 +199,6 @@ class Program
                 if (Index == 60)
                 {
                     RenderPunch();
-                    // ++Index;
                 }
                 #endregion
 
@@ -187,15 +206,27 @@ class Program
                 if (Index == 63)
                 {
                     RenderHappyCrying();
-                    // ++Index;
                 }
                 #endregion
 
-                #region 바다 놀러가자고 묻는 여주
-                if (Index == 67)
+                #region 저돌적으로 얼굴을 들이대는 여주
+                if (Index == 68)
                 {
-                    RenderHappyCrying();
-                    // ++Index;
+                    RenderRush();
+                }
+                #endregion
+
+                #region 매력적인 표정의 여주
+                if (Index == 69)
+                {
+                    RenderAttractive();
+                }
+                #endregion
+
+                #region 매력적인 표정의 여주
+                if (Index == 72)
+                {
+                    RenderBikini();
                 }
                 #endregion
 
