@@ -7,25 +7,20 @@ class Program
     static void Main()
     {
         // 노래 넣는 방법
-       SoundPlayer music2 = new SoundPlayer("Last.wav");
-        music2.Load();
-        music2.Play();
+        //SoundPlayer music2 = new SoundPlayer("Last.wav");
+        // music2.Load();
+        // music2.Play();
 
         // 노래 배열로 넣는 방법
-        //SoundPlayer[] music =
-        //{
-        //    new SoundPlayer(),
-        //    new SoundPlayer(),
-        //    new SoundPlayer("Last.wav")
-        //};
+        SoundPlayer[] music =
+        {
+            new SoundPlayer("Last.wav")
+        };
 
-        //for(int i = 0; i < 3; i++)
-        //{
-        //    music[i].Load();
-        //}
-        //music[0].Play();
-        //music[1].Play();
-        //music[2].Play();
+        for (int i = 0; i < 1; i++)
+        {
+            music[i].Load();
+        }
 
         // 사용자 이름 설정을 위해 초기화
         // 초기화 시켜놓지 않으면 밑에 if문에서 할당되지 않은 지역변수 name을 사용했다고 나옵니다.
@@ -36,7 +31,7 @@ class Program
         Talking talking = new Talking();
 
         // 해당 배열마다 대사를 뽑기 위한 변수 선언
-        int Index = 0;
+        int Index = 70;
 
         // 게임 진행 중 어디서 나간지 확인하기 위한 변수 선언
         int gameOut = 0;
@@ -488,6 +483,7 @@ class Program
                 // 9번 선택지
                 if (talking.Talk[Index] == "선택 9번")
                 {
+                    music[0].Play();
                     Console.WriteLine("1번 : 사귄다고 고백한다.");
                     Console.WriteLine("\n2번 : 갑작스러운 고백으로 서윤이가 부담스러워 할 수 있으니 고백하지 않는다.");
                     key = Console.ReadKey().Key;
