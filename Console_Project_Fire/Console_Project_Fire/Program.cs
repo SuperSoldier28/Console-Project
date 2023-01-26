@@ -14,7 +14,7 @@ class Program
         Talking talking = new Talking();
 
         // 해당 배열마다 대사를 뽑기 위한 변수 선언
-        int Index = 75;
+        int Index = 0;
 
         // 게임 진행 중 어디서 나간지 확인하기 위한 변수 선언
         int gameOut = 0;
