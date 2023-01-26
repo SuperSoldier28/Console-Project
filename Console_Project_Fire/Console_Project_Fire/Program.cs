@@ -6,7 +6,27 @@ class Program
 {
     static void Main()
     {
-        SoundPlayer
+        // 노래 넣는 방법
+       SoundPlayer music2 = new SoundPlayer("Last.wav");
+        music2.Load();
+        music2.Play();
+
+        // 노래 배열로 넣는 방법
+        //SoundPlayer[] music =
+        //{
+        //    new SoundPlayer(),
+        //    new SoundPlayer(),
+        //    new SoundPlayer("Last.wav")
+        //};
+
+        //for(int i = 0; i < 3; i++)
+        //{
+        //    music[i].Load();
+        //}
+        //music[0].Play();
+        //music[1].Play();
+        //music[2].Play();
+
         // 사용자 이름 설정을 위해 초기화
         // 초기화 시켜놓지 않으면 밑에 if문에서 할당되지 않은 지역변수 name을 사용했다고 나옵니다.
         // 할당되지 않은 지역변수라는 오류를 보면 당황하지말고, 초기화를 시켜놓읍시다.
