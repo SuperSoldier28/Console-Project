@@ -14,18 +14,54 @@ class Program
         // 노래 배열로 넣는 방법
         SoundPlayer[] music =
         {
-            new SoundPlayer("StartPart.wav"),
-            new SoundPlayer("Sad.wav"),
-            new SoundPlayer("Last.wav")
+            new SoundPlayer("StartPart.wav"),  // 시작하는 음악 - 0
+
+            new SoundPlayer("nervous.wav"),  // 긴장 되는 음악 - 1
+
+            new SoundPlayer("depressed.wav"), // 우울한 음악 - 2
+
+            new SoundPlayer("reunion.wav"), // 재회한 음악 - 3
+
+            new SoundPlayer("tension.wav"), // 긴장감이 감도는 음악 - 4
+
+            new SoundPlayer("confident.wav"), // 빌런한테 도망치지 않고 당당하게 주먹은 쥔 주인공 - 5
+
+            new SoundPlayer("sincerePunch.wav"), // 빌런한테 진심펀치 날린 순간 음악 - 6
+
+            new SoundPlayer("victory.wav"), // 빌런을 이겼을 때 나오는 음악 - 7
+
+            new SoundPlayer("Sad.wav"), // 슬픈 음악 - 8
+
+            new SoundPlayer("Last.wav"), // 마지막 선택시 음악 - 9
+
+            new SoundPlayer("realLast.wav") // 마지막 앤딩신 - 10
         };
 
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < music.Length; i++)
         {
             music[i].Load();
         }
-        // music[0] = 시작음악
-        // music[1] = 슬픈 음악
-        // music[2] = 마지막 음악
+        // music[0] = 시작 음악
+
+        // music[1] = 긴장 되는 음악
+
+        // music[2] = 우울한 음악
+
+        // music[3] = 재회 음악
+
+        // music[4] = 긴장감이 감도는 음악
+
+        // music[5] = 빌런한테 도망치지 않고 당당하게 주먹은 쥔 주인공
+
+        // music[6] = 빌런한테 진심 펀치 날린 순간 음악
+
+        // music[7] = 승리 음악
+
+        // music[8] = 슬픈 음악
+
+        // music[9] = 마지막 선택시 음악
+
+        // music[10] = 마지막 엔딩신
 
 
         // 사용자 이름 설정을 위해 초기화
@@ -37,7 +73,7 @@ class Program
         Talking talking = new Talking();
 
         // 해당 배열마다 대사를 뽑기 위한 변수 선언
-        int Index = 70;
+        int Index = 20;
 
         // 게임 진행 중 어디서 나간지 확인하기 위한 변수 선언
         int gameOut = 0;
@@ -221,6 +257,55 @@ class Program
         // 게임 루프
         while (true)
         {
+            #region 상황에 맞는 음악 설정
+            if (Index == 3)
+            {
+                // 긴장되는 상황
+                music[1].Play();
+            }
+
+            if (Index == 10)
+            {
+                // 우울한 상황
+                music[2].Play();
+            }
+
+            if (Index == 20)
+            {
+                // 재회 및 새로운 학기를 시작하는 상황
+                music[3].Play();
+            }
+
+            if (Index == 37)
+            {
+                // 빌런과 부딪힌 심각한 상황
+                music[4].Play();
+            }
+
+            if (Index == 56)
+            {
+                // 빌런한테 도망치지 않고 당당하게 주먹은 쥔 주인공
+                music[5].Play();
+            }
+
+            if (Index == 60)
+            {
+                // 빌런한테 진심 펀치 날린 순간 음악
+                music[6].Play();
+            }
+
+            if (Index == 62)
+            {
+                // 승리의 순간
+                music[7].Play();
+            }
+
+            if (Index == 65)
+            {
+                // 남주가 여주를 차고, 둘이 사귀는 직전까지 노래
+                music[8].Play();
+            }
+            #endregion
             //==============ProcessInput================
             ConsoleKey key = ConsoleKey.NoName; // 콘솔 키 소환, 아무것도 아닌 상태
             key = Console.ReadKey().Key; // 동기 처리
@@ -232,6 +317,8 @@ class Program
             {
                 Console.WriteLine("============================================================================================================================================================");
                 Console.WriteLine(" ");
+               
+                // 상황에 맞게 아스키 아트 나오도록 만든 구문
                 #region 포효
                 if (Index == 56)
                 {
@@ -307,34 +394,38 @@ class Program
                 Index++;
                 Console.WriteLine(" ");
 
-            
+             
+
                 // 1번 선택지
-                //if (talking.Talk[Index] == "선택 1번")
-                //{
-                //    Console.WriteLine("1번 : 도와주러 간다");
-                //    Console.WriteLine("2번 : 도와주러 가지 않는다");
-                //    key = Console.ReadKey().Key;
+                if (talking.Talk[Index] == "선택 1번")
+                {
+                    
+                    Console.WriteLine("1번 : 도와주러 간다");
+                    Console.WriteLine("2번 : 도와주러 가지 않는다");
+                    Console.WriteLine("\n방법은 숫자 키 입력, 그리고 Enter키를 누르시면 됩니다.");
+                    key = Console.ReadKey().Key;
 
 
-                //    if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
-                //    {
-                //        // [6] - 선택 1번 출력을 대사로 바꿔주기.
-                //        talking.Talk[Index] = talking.Talk[Index].Replace("선택 1번", "타다다닥!!!(뛰는 소리)\n주인공 : 저...저기요!!!");
-                //        continue;
-                //    }
+                    if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
+                    {
+                        // [6] - 선택 1번 출력을 대사로 바꿔주기.
+                        talking.Talk[Index] = talking.Talk[Index].Replace("선택 1번", "타다다닥!!!(뛰는 소리)\n주인공 : 저...저기요!!!");
+                        continue;
+                    }
 
-                //    if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
-                //    {
-                //        gameOut = 1;
-                //        break;
-                //    }
-                //}
+                    if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
+                    {
+                        gameOut = 1;
+                        break;
+                    }
+                }
 
                 // 2번 선택지
                 if (talking.Talk[Index] == "선택 2번")
                 {
                     Console.WriteLine("1번 : 김윤하한테 간다.");
                     Console.WriteLine("2번 : 김윤하한테 가지 않는다.");
+                    Console.WriteLine("\n방법은 숫자 키 입력, 그리고 Enter키를 누르시면 됩니다.");
                     key = Console.ReadKey().Key;
 
 
@@ -357,6 +448,7 @@ class Program
                 {
                     Console.WriteLine("1번 : 빵 사러 간다.");
                     Console.WriteLine("2번 : 빵 사러 가지 않는다.");
+                    Console.WriteLine("\n방법은 숫자 키 입력, 그리고 Enter키를 누르시면 됩니다.");
                     key = Console.ReadKey().Key;
 
                     if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
@@ -383,6 +475,7 @@ class Program
                 {
                     Console.WriteLine("1번 : 김윤하한테 간다.");
                     Console.WriteLine("2번 : 김윤하한테 가지 않는다.");
+                    Console.WriteLine("\n방법은 숫자 키 입력, 그리고 Enter키를 누르시면 됩니다.");
                     key = Console.ReadKey().Key;
 
                     if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
@@ -405,6 +498,7 @@ class Program
                     Console.WriteLine("다가오는 김윤하한테서!!!!!");
                     Console.WriteLine("\n1번 : 도망친다.");
                     Console.WriteLine("2번 : 도망치지 않고 맞선다.");
+                    Console.WriteLine("\n방법은 숫자 키 입력, 그리고 Enter키를 누르시면 됩니다.");
                     key = Console.ReadKey().Key;
 
                     if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
@@ -428,6 +522,7 @@ class Program
                 {
                     Console.WriteLine("1번 : 김윤하한테 계속 맞는다.");
                     Console.WriteLine("2번 : 젖먹던 힘을 다해 김윤하를 때린다.");
+                    Console.WriteLine("\n방법은 숫자 키 입력, 그리고 Enter키를 누르시면 됩니다.");
                     key = Console.ReadKey().Key;
 
                     if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
@@ -450,6 +545,7 @@ class Program
                 {
                     Console.WriteLine("1번 : 턱");
                     Console.WriteLine("2번 : 볼");
+                    Console.WriteLine("\n방법은 숫자 키 입력, 그리고 Enter키를 누르시면 됩니다.");
                     key = Console.ReadKey().Key;
 
 
@@ -471,6 +567,7 @@ class Program
                 {
                     Console.WriteLine("1번 : 사귄다.");
                     Console.WriteLine("2번 : 사귀지 않는다.");
+                    Console.WriteLine("\n방법은 숫자 키 입력, 그리고 Enter키를 누르시면 됩니다.");
                     key = Console.ReadKey().Key;
 
 
@@ -490,9 +587,10 @@ class Program
                 // 9번 선택지
                 if (talking.Talk[Index] == "선택 9번")
                 {
-                    music[2].Play();
+                    music[9].Play();
                     Console.WriteLine("1번 : 사귄다고 고백한다.");
                     Console.WriteLine("\n2번 : 갑작스러운 고백으로 서윤이가 부담스러워 할 수 있으니 고백하지 않는다.");
+                    Console.WriteLine("\n방법은 숫자 키 입력, 그리고 Enter키를 누르시면 됩니다.");
                     key = Console.ReadKey().Key;
 
 
@@ -615,7 +713,7 @@ class Program
             Console.WriteLine($"\n{heroName} : 나랑 사귀자 서윤아. 더이상 내 마음을 못숨기겠어. 정말 많이 좋아해 서윤아...!");
             Console.WriteLine($"\n이서윤 : ...이 순간을 얼마나 기달렸는지 몰라 바보야...이제서야 말해주고...나도 많이 좋아해 {heroName}..!");
             Console.WriteLine("\n게임해주셔서 감사합니다. 유저분 모두 행복한 나날들이 늘 함께 하길 바라겠으며 다음에도 저희 게임을 이용 부탁드립니다. 감사합니다.");
-            music[2].PlaySync();
+            music[10].PlaySync();
         }
 
     }
