@@ -9,12 +9,10 @@ namespace Console_Project_Fire
 {
     class Talking
     {
-
-
         public string[] Talk = new string[]
         {
 
-
+            
             // [0]
             "반가워요 주인공님!\n아름다운 미연시 세계로 당신을 초대합니다!",
 
