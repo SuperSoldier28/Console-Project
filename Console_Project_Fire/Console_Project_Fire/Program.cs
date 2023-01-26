@@ -582,14 +582,14 @@ class Program
 
                     if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
                     {
-                        talking.Talk[Index] = talking.Talk[Index].Replace("선택 8번", "주인공 : (당황하면서)하하하...아니...우리 고3이잖아...프로그래밍 언어 공부에 집중하자...미안해 서윤아.");
-                        continue;
+                        gameOut = 8;
+                        break;
                     }
 
                     if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
                     {
-                        gameOut = 8;
-                        break;
+                        talking.Talk[Index] = talking.Talk[Index].Replace("선택 8번", "주인공 : (당황하면서)하하하...아니...우리 고3이잖아...프로그래밍 언어 공부에 집중하자...미안해 서윤아.");
+                        continue;
                     }
                 }
 
@@ -707,9 +707,10 @@ class Program
         {
             Console.Clear();
             RenderMarry();
-            music[(int)contextMusic.wedding].PlaySync();
-            Console.WriteLine($"\n{heroName}은(는) 꿈에 그리던 도내 최상 S급 미녀 서윤이와 연애를 했습니다.");
+            Console.WriteLine($"\n{heroName}은(는) 이서윤과 연애를 했습니다.");
+            Console.WriteLine($"\n{heroName}은(는) 세상에서 제일 아름다운 그녀와 함께 할 수 있다는 사실에 매일매일이 꿈과 같았습니다.");
             Console.WriteLine($"\n그렇게 {heroName}과(와) 이서윤은 같은 대학으로 진학하고, 열심히 공부해서, 서로 진실된 사랑의 약속인 '결혼'을 하면서 서로 행복하게 살았답니다~~!!!");
+            music[(int)contextMusic.wedding].PlaySync();
 
         }
 
