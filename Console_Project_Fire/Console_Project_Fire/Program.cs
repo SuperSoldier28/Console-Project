@@ -15,6 +15,7 @@ class Program
         SoundPlayer[] music =
         {
             new SoundPlayer("StartPart.wav"),
+            new SoundPlayer("Sad.wav"),
             new SoundPlayer("Last.wav")
         };
 
@@ -22,8 +23,10 @@ class Program
         {
             music[i].Load();
         }
-        // 
-        // 
+        // music[0] = 시작음악
+        // music[1] = 슬픈 음악
+        // music[2] = 마지막 음악
+
 
         // 사용자 이름 설정을 위해 초기화
         // 초기화 시켜놓지 않으면 밑에 if문에서 할당되지 않은 지역변수 name을 사용했다고 나옵니다.
@@ -306,26 +309,26 @@ class Program
 
             
                 // 1번 선택지
-                if (talking.Talk[Index] == "선택 1번")
-                {
-                    Console.WriteLine("1번 : 도와주러 간다");
-                    Console.WriteLine("2번 : 도와주러 가지 않는다");
-                    key = Console.ReadKey().Key;
+                //if (talking.Talk[Index] == "선택 1번")
+                //{
+                //    Console.WriteLine("1번 : 도와주러 간다");
+                //    Console.WriteLine("2번 : 도와주러 가지 않는다");
+                //    key = Console.ReadKey().Key;
 
 
-                    if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
-                    {
-                        // [6] - 선택 1번 출력을 대사로 바꿔주기.
-                        talking.Talk[Index] = talking.Talk[Index].Replace("선택 1번", "타다다닥!!!(뛰는 소리)\n주인공 : 저...저기요!!!");
-                        continue;
-                    }
+                //    if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
+                //    {
+                //        // [6] - 선택 1번 출력을 대사로 바꿔주기.
+                //        talking.Talk[Index] = talking.Talk[Index].Replace("선택 1번", "타다다닥!!!(뛰는 소리)\n주인공 : 저...저기요!!!");
+                //        continue;
+                //    }
 
-                    if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
-                    {
-                        gameOut = 1;
-                        break;
-                    }
-                }
+                //    if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
+                //    {
+                //        gameOut = 1;
+                //        break;
+                //    }
+                //}
 
                 // 2번 선택지
                 if (talking.Talk[Index] == "선택 2번")
@@ -487,7 +490,7 @@ class Program
                 // 9번 선택지
                 if (talking.Talk[Index] == "선택 9번")
                 {
-                    music[1].Play();
+                    music[2].Play();
                     Console.WriteLine("1번 : 사귄다고 고백한다.");
                     Console.WriteLine("\n2번 : 갑작스러운 고백으로 서윤이가 부담스러워 할 수 있으니 고백하지 않는다.");
                     key = Console.ReadKey().Key;
@@ -608,11 +611,11 @@ class Program
         if (Last == 1 && key1 == ConsoleKey.Enter)
         {
             Console.Clear();
-            music[1].Play();
             RenderLove();
             Console.WriteLine($"\n{heroName} : 나랑 사귀자 서윤아. 더이상 내 마음을 못숨기겠어. 정말 많이 좋아해 서윤아...!");
             Console.WriteLine($"\n이서윤 : ...이 순간을 얼마나 기달렸는지 몰라 바보야...이제서야 말해주고...나도 많이 좋아해 {heroName}..!");
             Console.WriteLine("\n게임해주셔서 감사합니다. 유저분 모두 행복한 나날들이 늘 함께 하길 바라겠으며 다음에도 저희 게임을 이용 부탁드립니다. 감사합니다.");
+            music[2].PlaySync();
         }
 
     }
