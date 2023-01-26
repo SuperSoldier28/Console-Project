@@ -580,7 +580,7 @@ class Program
                     key = Console.ReadKey().Key;
 
 
-                    if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
+                    if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
                     {
                         talking.Talk[Index] = talking.Talk[Index].Replace("선택 8번", "주인공 : (당황하면서)하하하...아니...우리 고3이잖아...프로그래밍 언어 공부에 집중하자...미안해 서윤아.");
                         continue;
