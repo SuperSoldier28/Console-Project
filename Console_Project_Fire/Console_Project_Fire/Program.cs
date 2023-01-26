@@ -14,6 +14,7 @@ class Program
         // 노래 배열로 넣는 방법
         SoundPlayer[] music =
         {
+            new SoundPlayer("StartPart.wav"),
             new SoundPlayer("Last.wav")
         };
 
@@ -21,6 +22,8 @@ class Program
         {
             music[i].Load();
         }
+        // 
+        // 
 
         // 사용자 이름 설정을 위해 초기화
         // 초기화 시켜놓지 않으면 밑에 if문에서 할당되지 않은 지역변수 name을 사용했다고 나옵니다.
@@ -42,6 +45,7 @@ class Program
 
         // 미연시 사진과 같이 출력 될 시작 메세지
         RenderStartBeautifullLady();
+        music[0].Play();
         Console.WriteLine("안녕하세요!");
         Console.WriteLine("망상의 나라 [찐따와 일진의 차이는 한 끝 차이라는 것을 여우에게 증명했던 건에 대하여]에 오신 것을 환영합니다.");
         Console.WriteLine("게임 진행을 위해 이름을 작성하고 Enter키를 2번 눌러주세요");
@@ -483,7 +487,7 @@ class Program
                 // 9번 선택지
                 if (talking.Talk[Index] == "선택 9번")
                 {
-                    music[0].Play();
+                    music[1].Play();
                     Console.WriteLine("1번 : 사귄다고 고백한다.");
                     Console.WriteLine("\n2번 : 갑작스러운 고백으로 서윤이가 부담스러워 할 수 있으니 고백하지 않는다.");
                     key = Console.ReadKey().Key;
@@ -604,6 +608,7 @@ class Program
         if (Last == 1 && key1 == ConsoleKey.Enter)
         {
             Console.Clear();
+            music[1].Play();
             RenderLove();
             Console.WriteLine($"\n{heroName} : 나랑 사귀자 서윤아. 더이상 내 마음을 못숨기겠어. 정말 많이 좋아해 서윤아...!");
             Console.WriteLine($"\n이서윤 : ...이 순간을 얼마나 기달렸는지 몰라 바보야...이제서야 말해주고...나도 많이 좋아해 {heroName}..!");
