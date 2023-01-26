@@ -5,12 +5,6 @@ class Program
 {
     static void Main()
     {
-        string[] Yeoju = File.ReadAllLines("StartBeautifulLLady.txt");
-
-        for (int i = 0; i < Yeoju.Length; i++)
-        {
-            Console.WriteLine(Yeoju[i]);
-        }
         // 사용자 이름 설정을 위해 초기화
         // 초기화 시켜놓지 않으면 밑에 if문에서 할당되지 않은 지역변수 name을 사용했다고 나옵니다.
         // 할당되지 않은 지역변수라는 오류를 보면 당황하지말고, 초기화를 시켜놓읍시다.
@@ -20,7 +14,7 @@ class Program
         Talking talking = new Talking();
 
         // 해당 배열마다 대사를 뽑기 위한 변수 선언
-        int Index = 0;
+        int Index = 75;
 
         // 게임 진행 중 어디서 나간지 확인하기 위한 변수 선언
         int gameOut = 0;
@@ -30,6 +24,7 @@ class Program
 
 
         // 미연시 사진과 같이 출력 될 시작 메세지
+        RenderStartBeautifullLady();
         Console.WriteLine("안녕하세요!");
         Console.WriteLine("망상의 나라 [찐따와 일진의 차이는 한 끝 차이라는 것을 여우에게 증명했던 건에 대하여]에 오신 것을 환영합니다.");
         Console.WriteLine("게임 진행을 위해 이름을 작성하고 Enter키를 2번 눌러주세요");
@@ -42,6 +37,18 @@ class Program
             // 변경된 이름을 string 타입에 talking.Talk로 넣어줍니다.
             talking.Talk[i] = talking.Talk[i].Replace("주인공", name);
         }
+
+        #region 여주 얼굴 - 제일 잘나온 작품
+        void RenderStartBeautifullLady()
+        {
+            string[] Yeoju = File.ReadAllLines("StartBeautifulLLady.txt");
+
+            for (int i = 0; i < Yeoju.Length; i++)
+            {
+                Console.WriteLine(Yeoju[i]);
+            }
+        }
+        #endregion
 
         #region 남주 포효 이미지 
         void RenderKsw()
@@ -261,6 +268,13 @@ class Program
                 if (Index == 74)
                 {
                     RenderFood();
+                }
+                #endregion
+
+                #region 아름다운 여주
+                if (Index == 76)
+                {
+                    RenderStartBeautifullLady();
                 }
                 #endregion
 
@@ -493,6 +507,7 @@ class Program
         if (gameOut == 2 && key1 == ConsoleKey.Enter)
         {
             Console.Clear();
+            RenderViolence();
             Console.WriteLine($"{heroName}은(는) 괜한 객기로 김윤하의 화를 돋았습니다..");
             Console.WriteLine($"{heroName}은(는) 김윤하에게 이루 말하기 힘들정도로 구타를 당했습니다.");
             Console.WriteLine($"수치스러움을 느끼던 {heroName}은(는) 학교를 자퇴했습니다.");
@@ -502,6 +517,7 @@ class Program
         if (gameOut == 3 && key1 == ConsoleKey.Enter)
         {
             Console.Clear();
+            RenderViolence();
             Console.WriteLine($"{heroName}은(는) 빵을 사오지 않아 김윤하의 화를 돋았습니다.");
             Console.WriteLine($"{heroName}은(는) 김윤하에게 이루 말하기 힘들정도로 구타를 당했습니다.");
             Console.WriteLine($"수치스러움을 느끼던 {heroName}은(는) 학교를 자퇴했습니다.");
@@ -511,8 +527,9 @@ class Program
         if (gameOut == 4 && key1 == ConsoleKey.Enter)
         {
             Console.Clear();
+            RenderViolence();
             Console.WriteLine($"{heroName}은(는) 수치스럼울 무릎 쓰고 김윤하한테 걸어갔습니다.");
-            Console.WriteLine($"{heroName}은(는) 서윤이가 보는 앞에서 싸대릴 여러대 맞고, 짓밟혔습니다.");
+            Console.WriteLine($"{heroName}은(는) 서윤이가 보는 앞에서 여러대 맞고, 짓밟혔습니다.");
             Console.WriteLine($"서윤이가 보기가 부끄러웠던 {heroName}은(는) 학교를 자퇴했습니다.");
         }
 
@@ -569,9 +586,9 @@ class Program
         if (Last == 1 && key1 == ConsoleKey.Enter)
         {
             Console.Clear();
+            RenderLove();
             Console.WriteLine($"\n{heroName} : 나랑 사귀자 서윤아. 더이상 내 마음을 못숨기겠어. 정말 많이 좋아해 서윤아...!");
             Console.WriteLine($"\n이서윤 : ...이 순간을 얼마나 기달렸는지 몰라 바보야...이제서야 말해주고...나도 많이 좋아해 {heroName}..!");
-            RenderLove();
             Console.WriteLine("\n게임해주셔서 감사합니다. 유저분 모두 행복한 나날들이 늘 함께 하길 바라겠으며 다음에도 저희 게임을 이용 부탁드립니다. 감사합니다.");
         }
 
